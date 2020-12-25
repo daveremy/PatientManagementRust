@@ -1,5 +1,5 @@
 [package]
-name = "patient_name"
+name = "patient_management"
 version = "0.1.0"
 authors = ["Dave Remy <email@daveremy.com>"]
 edition = "2018"
