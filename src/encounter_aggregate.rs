@@ -28,7 +28,7 @@ impl AggregateRoot for Encounter {
        self.patient_id.unwrap() 
     }
 
-    fn get_version(&self) -> i32 {
+    fn version(&self) -> i32 {
         self.version
     }
 
@@ -50,14 +50,14 @@ impl AggregateRoot for Encounter {
 #[allow(dead_code)]
 impl Encounter {
     fn new(patient_id: Uuid, patient_name: String, age_in_years: u32, ward: u32) -> Self {
-        let mut e : Encounter = Encounter { version: -1, ..Default::default() };
-        e.raise(EncounterEvent::PatientAdmitted(PatientAdmitted{
+        let mut encounter = Encounter { version: -1, ..Default::default() };
+        encounter.raise(EncounterEvent::PatientAdmitted(PatientAdmitted{
             patient_id,
             patient_name,
             age_in_years,
             ward,
         }));
-        e
+        encounter
     }
     
     fn discharge_patient(&mut self) -> Result<(), DomainError> {
